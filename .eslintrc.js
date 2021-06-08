@@ -19,6 +19,8 @@ module.exports = {
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
   rules: {
     'no-use-before-define': 'off',
+    'space-before-function-paren': 'off',
+    'comma-dangle': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
