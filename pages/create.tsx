@@ -1,8 +1,11 @@
-import React from 'react'
-import ReactMarkdown from 'react-markdown'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import Layout from '../components/Layout'
+
+import MDEditor from '@uiw/react-md-editor'
+import '@uiw/react-md-editor/dist/markdown-editor.css'
+import '@uiw/react-markdown-preview/dist/markdown.css'
 
 const Container = styled.div`
   height: 100%;
@@ -20,12 +23,16 @@ const Item = styled.div`
 `
 
 export default function Create() {
+  const [value, setValue] = useState('**Hello world!!!**')
+
   return (
     <Layout>
       <Container>
-        <Item>Hello</Item>
         <Item>
-          <ReactMarkdown># Hello, *world*!</ReactMarkdown>
+          <MDEditor value={value} onChange={(value) => setValue(value ?? '')} />
+        </Item>
+        <Item>
+          <MDEditor.Markdown source={value} style={{ height: '100%' }} />
         </Item>
       </Container>
     </Layout>
