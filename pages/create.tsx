@@ -47,6 +47,20 @@ export default function Create() {
         <Item>
           <MDEditor.Markdown source={value} style={{ height: '100%' }} />
         </Item>
+        <button
+          onClick={() => {
+            const filename = prompt('Enter you file name')
+            if (filename) {
+              const a = document.createElement('a')
+              const blob = new Blob([value])
+              a.href = URL.createObjectURL(blob)
+              a.download = filename
+              a.click()
+            }
+          }}
+        >
+          Download
+        </button>
       </Container>
     </Layout>
   )
