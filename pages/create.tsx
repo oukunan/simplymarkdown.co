@@ -18,8 +18,11 @@ const Container = styled.div`
 
 const Item = styled.div`
   flex: 1;
-  border: 1px solid;
   height: 100%;
+  max-height: calc(100vh - 160px);
+  overflow: auto;
+  border: 1px solid black;
+  border-radius: 8px;
 `
 
 const MDEStyled = styled(MDEditor)`
@@ -45,7 +48,13 @@ export default function Create() {
           />
         </Item>
         <Item>
-          <MDEditor.Markdown source={value} style={{ height: '100%' }} />
+          <MDEditor.Markdown
+            source={value}
+            style={{
+              height: '100%',
+              padding: '48px 24px',
+            }}
+          />
         </Item>
         <button
           onClick={() => {
