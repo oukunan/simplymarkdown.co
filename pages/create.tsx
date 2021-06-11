@@ -22,6 +22,12 @@ const Item = styled.div`
   height: 100%;
 `
 
+const MDEStyled = styled(MDEditor)`
+  .w-md-editor-content {
+    flex: 1;
+  }
+`
+
 export default function Create() {
   const [value, setValue] = useState('**Hello world!!!**')
 
@@ -29,7 +35,14 @@ export default function Create() {
     <Layout>
       <Container>
         <Item>
-          <MDEditor value={value} onChange={(value) => setValue(value ?? '')} />
+          <MDEStyled
+            value={value}
+            highlightEnable
+            onChange={(value) => setValue(value ?? '')}
+            style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
+            visiableDragbar={false}
+            preview="edit"
+          />
         </Item>
         <Item>
           <MDEditor.Markdown source={value} style={{ height: '100%' }} />
