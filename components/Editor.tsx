@@ -86,6 +86,7 @@ export default function Editor(props: Props) {
         preview="edit"
         commands={getCommands()}
         extraCommands={[
+          customExtraCommands.copy,
           {
             ...customExtraCommands.reset,
             execute: openModal,
