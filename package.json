@@ -11,6 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@reach/dialog": "^0.15.0",
     "@uiw/react-md-editor": "^3.3.6",
     "next": "10.2.3",
     "next-remove-imports": "^1.0.5",
