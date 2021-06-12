@@ -31,3 +31,15 @@ const apiReference: ICommand = {
 export const customCommands: { [key: string]: ICommand } = {
   apiReference,
 }
+
+const reset: ICommand = {
+  name: 'test',
+  keyCommand: 'test',
+  buttonProps: { 'aria-label': 'Reset markdown' },
+  icon: <span>Reset</span>,
+  execute: () => null,
+}
+
+export const customExtraCommands: { [key: string]: ICommand } = {
+  reset,
+}
