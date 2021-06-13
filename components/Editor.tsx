@@ -3,12 +3,15 @@ import styled from 'styled-components'
 import MDEditor, { commands } from '@uiw/react-md-editor'
 
 import { customCommands, customExtraCommands } from '../data/custom-commands'
-import { Modal } from './Modal'
+import Button from './Button'
+import Modal from './Modal'
 
 type Props = {
   value: string
   updateValue: (value: string) => void
 }
+
+type MarkdownExtension = 'md' | 'markdown'
 
 const MDEStyled = styled(MDEditor)`
   .w-md-editor-content {
@@ -24,8 +27,42 @@ const MDEStyled = styled(MDEditor)`
   }
 `
 
+const DownloadModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 400px;
+
+  span {
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+`
+
+const DownloadInputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  input {
+    border: 1px solid #dfdfe0;
+    border-radius: 4px;
+    padding: 10px;
+  }
+`
+
+const FileExtensionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 export default function Editor(props: Props) {
   const [fileName, setFileName] = useState('')
+  const [fileExtension, setFileExtension] = useState<MarkdownExtension>('md')
   const [resetModalVisible, setResetModalVisible] = useState(false)
   const [downloadModalVisible, setDownloadModalVisible] = useState(false)
 
@@ -33,57 +70,110 @@ export default function Editor(props: Props) {
   const closeResetModal = () => setResetModalVisible(false)
 
   const openDownloadModal = () => setDownloadModalVisible(true)
-  const closeDownloadModal = () => setDownloadModalVisible(false)
+  const closeDownloadModal = () => {
+    setFileName('')
+    setDownloadModalVisible(false)
+  }
 
   const renderResetModal = useCallback(() => {
     return (
-      <Modal isOpen={resetModalVisible} onClose={closeResetModal}>
+      <Modal
+        isOpen={resetModalVisible}
+        onClose={closeResetModal}
+        buttons={
+          <>
+            <Button type="secondary" onClick={closeResetModal}>
+              No
+            </Button>
+            <Button
+              onClick={() => {
+                props.updateValue('')
+                closeResetModal()
+              }}
+            >
+              Continue
+            </Button>
+          </>
+        }
+      >
         <p>All text will be removed, are you sure?</p>
-        <button onClick={closeResetModal}>No</button>
-        <button
-          onClick={() => {
-            props.updateValue('')
-            closeResetModal()
-          }}
-        >
-          Continue
-        </button>
       </Modal>
     )
   }, [resetModalVisible, props])
 
   const renderDownloadModal = useCallback(() => {
     return (
-      <Modal isOpen={downloadModalVisible} onClose={closeDownloadModal}>
-        <div>
-          <h1>Please enter you file name</h1>
-          <input
-            type="text"
-            value={fileName}
-            onChange={(e) => {
-              e.stopPropagation()
-
-              setFileName(e.target.value)
-            }}
-          />
-          <button
+      <Modal
+        isOpen={downloadModalVisible}
+        onClose={closeDownloadModal}
+        buttons={
+          <Button
+            disabled={fileName.trim().length === 0}
             onClick={() => {
               const a = document.createElement('a')
               const blob = new Blob([props.value])
               a.href = URL.createObjectURL(blob)
-              a.download = fileName
+              a.download = `${fileName}.${fileExtension}`
               a.click()
 
               setFileName('')
               closeDownloadModal()
             }}
           >
-            Confirm
-          </button>
-        </div>
+            Download
+          </Button>
+        }
+      >
+        <DownloadModalContent>
+          <DownloadInputWrapper>
+            <label htmlFor="filename">File name</label>
+            <input
+              name="filename"
+              id="filename"
+              type="text"
+              value={fileName}
+              onChange={(e) => {
+                e.stopPropagation()
+
+                setFileName(e.target.value)
+              }}
+              autoFocus
+            />
+          </DownloadInputWrapper>
+          <FileExtensionWrapper>
+            <span>Pick your extension</span>
+            <div>
+              <input
+                type="radio"
+                name="md"
+                id="md"
+                value="md"
+                checked={fileExtension === 'md'}
+                onChange={(e) =>
+                  setFileExtension(e.target.value as MarkdownExtension)
+                }
+              />
+              <label htmlFor="md">.md</label>
+
+              <br />
+              <input
+                type="radio"
+                name="markdown"
+                id="markdown"
+                value="markdown"
+                checked={fileExtension === 'markdown'}
+                onChange={(e) =>
+                  setFileExtension(e.target.value as MarkdownExtension)
+                }
+              />
+              <label htmlFor="markdown">.markdown</label>
+            </div>
+          </FileExtensionWrapper>
+          <br />
+        </DownloadModalContent>
       </Modal>
     )
-  }, [downloadModalVisible, fileName, props])
+  }, [downloadModalVisible, fileName, fileExtension, props])
 
   const getCommands = () => [
     commands.bold,
@@ -136,6 +226,7 @@ export default function Editor(props: Props) {
         ]}
         onChange={(value) => props.updateValue(value ?? '')}
         visiableDragbar={false}
+        autoFocus
         highlightEnable
       />
       {renderResetModal()}

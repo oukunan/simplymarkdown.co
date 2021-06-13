@@ -1,15 +1,31 @@
-import '@reach/dialog/styles.css'
-
 import React from 'react'
 import BaseModal from 'react-modal'
+import styled from 'styled-components'
 
 type Props = {
   isOpen: boolean
+  buttons: React.ReactNode
   onClose: () => void
   children: React.ReactNode
 }
 
-export function Modal(props: Props) {
+const CloseButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+`
+
+export default function Modal(props: Props) {
   return (
     <BaseModal
       isOpen={props.isOpen}
@@ -25,10 +41,9 @@ export function Modal(props: Props) {
         },
       }}
     >
-      <button className="close-button" onClick={props.onClose}>
-        x
-      </button>
+      <CloseButton onClick={props.onClose}>&#x2715;</CloseButton>
       {props.children}
+      <ButtonWrapper>{props.buttons}</ButtonWrapper>
     </BaseModal>
   )
 }
