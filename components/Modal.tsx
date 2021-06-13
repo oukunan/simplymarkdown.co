@@ -1,7 +1,7 @@
 import '@reach/dialog/styles.css'
 
 import React from 'react'
-import { Dialog } from '@reach/dialog'
+import BaseModal from 'react-modal'
 
 type Props = {
   isOpen: boolean
@@ -11,11 +11,24 @@ type Props = {
 
 export function Modal(props: Props) {
   return (
-    <Dialog isOpen={props.isOpen} onDismiss={props.onClose}>
+    <BaseModal
+      isOpen={props.isOpen}
+      onRequestClose={props.onClose}
+      style={{
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+        },
+      }}
+    >
       <button className="close-button" onClick={props.onClose}>
-        <span aria-hidden>×</span>
+        x
       </button>
       {props.children}
-    </Dialog>
+    </BaseModal>
   )
 }

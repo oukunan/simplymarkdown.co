@@ -49,4 +49,11 @@ export const customExtraCommands: { [key: string]: ICommand } = {
     // TODO: Find a better way  to execute the command
     execute: () => null,
   },
+  download: {
+    name: 'Download',
+    keyCommand: 'download',
+    buttonProps: { 'aria-label': 'Download markdown' },
+    icon: <span>Download</span>,
+    execute: () => null,
+  },
 }

@@ -25,27 +25,65 @@ const MDEStyled = styled(MDEditor)`
 `
 
 export default function Editor(props: Props) {
-  const [modalVisible, setModalVisible] = useState(false)
+  const [fileName, setFileName] = useState('')
+  const [resetModalVisible, setResetModalVisible] = useState(false)
+  const [downloadModalVisible, setDownloadModalVisible] = useState(false)
 
-  const openModal = () => setModalVisible(true)
-  const closeModal = () => setModalVisible(false)
+  const openResetModal = () => setResetModalVisible(true)
+  const closeResetModal = () => setResetModalVisible(false)
 
-  const renderModal = useCallback(() => {
+  const openDownloadModal = () => setDownloadModalVisible(true)
+  const closeDownloadModal = () => setDownloadModalVisible(false)
+
+  const renderResetModal = useCallback(() => {
     return (
-      <Modal isOpen={modalVisible} onClose={closeModal}>
+      <Modal isOpen={resetModalVisible} onClose={closeResetModal}>
         <p>All text will be removed, are you sure?</p>
-        <button onClick={closeModal}>No</button>
+        <button onClick={closeResetModal}>No</button>
         <button
           onClick={() => {
             props.updateValue('')
-            closeModal()
+            closeResetModal()
           }}
         >
           Continue
         </button>
       </Modal>
     )
-  }, [modalVisible, props])
+  }, [resetModalVisible, props])
+
+  const renderDownloadModal = useCallback(() => {
+    return (
+      <Modal isOpen={downloadModalVisible} onClose={closeDownloadModal}>
+        <div>
+          <h1>Please enter you file name</h1>
+          <input
+            type="text"
+            value={fileName}
+            onChange={(e) => {
+              e.stopPropagation()
+
+              setFileName(e.target.value)
+            }}
+          />
+          <button
+            onClick={() => {
+              const a = document.createElement('a')
+              const blob = new Blob([props.value])
+              a.href = URL.createObjectURL(blob)
+              a.download = fileName
+              a.click()
+
+              setFileName('')
+              closeDownloadModal()
+            }}
+          >
+            Confirm
+          </button>
+        </div>
+      </Modal>
+    )
+  }, [downloadModalVisible, fileName, props])
 
   const getCommands = () => [
     commands.bold,
@@ -89,14 +127,19 @@ export default function Editor(props: Props) {
           customExtraCommands.copy,
           {
             ...customExtraCommands.reset,
-            execute: openModal,
+            execute: openResetModal,
+          },
+          {
+            ...customExtraCommands.download,
+            execute: openDownloadModal,
           },
         ]}
         onChange={(value) => props.updateValue(value ?? '')}
         visiableDragbar={false}
         highlightEnable
       />
-      {renderModal()}
+      {renderResetModal()}
+      {renderDownloadModal()}
     </>
   )
 }
