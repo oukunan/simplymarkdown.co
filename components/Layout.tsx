@@ -17,6 +17,15 @@ const Header = styled.header`
   align-items: center;
   height: 64px;
   background-color: #232527;
+  padding-left: 32px;
+  padding-right: 32px;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 3px;
+  }
 `
 
 const Main = styled.main`
@@ -27,7 +36,7 @@ export default function Layout(props: Props) {
   return (
     <Container>
       <Header>
-        <Link href="/">LOGO</Link>
+        <Link href="/">📝 SimplyMDE</Link>
       </Header>
       <Main>{props.children}</Main>
     </Container>

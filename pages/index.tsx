@@ -9,12 +9,20 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 50px 100px;
+  padding: 128px 64px 96px;
 `
 
 const Title = styled.h1`
-  font-size: 75px;
+  font-size: 72px;
+  font-weight: 700;
   margin-top: 0;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 60px;
+  }
+`
+const SubTitleWrapper = styled.div`
+  max-width: 800px;
 `
 
 const SubTitle = styled.h3`
@@ -22,12 +30,16 @@ const SubTitle = styled.h3`
   margin-top: 0;
   color: #47525d;
   font-weight: 300;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
 `
 
 const StyledLink = styled.button`
   align-self: flex-start;
   margin-top: 20px;
-  padding: 24px;
+  padding: 20px 32px;
   border: none;
   border-radius: 8px;
   font-size: 20px;
@@ -37,18 +49,24 @@ const StyledLink = styled.button`
   cursor: pointer;
 `
 
+const Bold = styled.span`
+  font-weight: 600;
+`
+
 export default function Home() {
   return (
     <Layout>
       <Wrapper>
         <Title>Simply Markdown Editor</Title>
-        <SubTitle>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-          molestias id laboriosam itaque veniam officia aliquam sapiente.
-          Inventore, temporibus.
-        </SubTitle>
+        <SubTitleWrapper>
+          <SubTitle>
+            A simple way to create a markdown file with{' '}
+            <Bold>live preview</Bold>, <Bold>custom template </Bold> and{' '}
+            <Bold>instant download</Bold>.
+          </SubTitle>
+        </SubTitleWrapper>
         <Link href="/create">
-          <StyledLink>Let's Create Markdown</StyledLink>
+          <StyledLink>Let's Create</StyledLink>
         </Link>
       </Wrapper>
     </Layout>
