@@ -25,6 +25,15 @@ const MDEStyled = styled(MDEditor)`
   .w-md-editor-text > .w-md-editor-text-pre {
     font-family: monospace;
   }
+
+  .w-md-editor-toolbar li > button {
+    color: black;
+  }
+
+  .w-md-editor-toolbar-child .w-md-editor-toolbar ul > li button {
+    padding: 10px 15px;
+    text-align: left;
+  }
 `
 
 const DownloadModalContent = styled.div`
@@ -203,7 +212,21 @@ export default function Editor(props: Props) {
     commands.orderedListCommand,
     commands.unorderedListCommand,
     commands.checkedListCommand,
-    customCommands.apiReference,
+    commands.group(
+      [
+        customCommands.codeExample,
+        customCommands.apiReference,
+        customCommands.contributing,
+        customCommands.pullRequest,
+        customCommands.collapsible,
+      ],
+      {
+        name: 'Templates',
+        groupName: 'templates',
+        icon: <span>Templates</span>,
+        buttonProps: { 'aria-label': 'Insert Templates' },
+      }
+    ),
   ]
 
   return (
