@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 import Layout from '../components/Layout'
+import GitHubSVG from '../assets/github.svg'
 
 const Wrapper = styled.div`
   height: 100%;
@@ -38,7 +39,7 @@ const SubTitle = styled.h3`
 
 const StyledLink = styled.button`
   align-self: flex-start;
-  margin-top: 20px;
+  margin: 20px 0;
   padding: 20px 32px;
   border: none;
   border-radius: 8px;
@@ -68,6 +69,13 @@ export default function Home() {
         <Link href="/create">
           <StyledLink>Let's Create</StyledLink>
         </Link>
+        <a
+          href="https://github.com/futurouz/readme"
+          target="__blank"
+          rel="noopener"
+        >
+          <GitHubSVG />
+        </a>
       </Wrapper>
     </Layout>
   )
