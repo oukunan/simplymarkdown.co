@@ -6,26 +6,52 @@ import {
   TextState,
 } from '@uiw/react-md-editor/lib/cjs/commands'
 
+import { templates } from './templates'
+
 export const customCommands: { [key: string]: ICommand } = {
   apiReference: {
     name: 'api',
     keyCommand: 'api',
     buttonProps: { 'aria-label': 'Insert api' },
-    icon: <span>API</span>,
+    icon: <span>API reference</span>,
     execute: (__state: TextState, api: TextAreaTextApi) => {
-      api.replaceSelection(`
-  ## API Reference
-          
-  #### Get all items
-          
-  \`\`\`http
-       GET /api/items
-  \`\`\`
-          
-  | Parameter | Type     | Description                |
-  | :-------- | :------- | :------------------------- |
-  | \`api_key\` | \`string\` | **Required**. Your API key |
-  `)
+      api.replaceSelection(templates.apiReference)
+    },
+  },
+  pullRequest: {
+    name: 'pr',
+    keyCommand: 'pr',
+    buttonProps: { 'aria-label': 'Insert pr' },
+    icon: <span>Pull request</span>,
+    execute: (__state: TextState, api: TextAreaTextApi) => {
+      api.replaceSelection(templates.pullRequest)
+    },
+  },
+  contributing: {
+    name: 'contributing',
+    keyCommand: 'contributing',
+    buttonProps: { 'aria-label': 'Insert contributing' },
+    icon: <span>Contributing</span>,
+    execute: (__state: TextState, api: TextAreaTextApi) => {
+      api.replaceSelection(templates.contributing)
+    },
+  },
+  codeExample: {
+    name: 'codeExample',
+    keyCommand: 'codeExample',
+    buttonProps: { 'aria-label': 'Insert codeExample' },
+    icon: <span>Code example</span>,
+    execute: (__state: TextState, api: TextAreaTextApi) => {
+      api.replaceSelection(templates.codeExample)
+    },
+  },
+  collapsible: {
+    name: 'collapsible',
+    keyCommand: 'collapsible',
+    buttonProps: { 'aria-label': 'Insert collapsible' },
+    icon: <span>Collapsible</span>,
+    execute: (__state: TextState, api: TextAreaTextApi) => {
+      api.replaceSelection(templates.collapsible)
     },
   },
 }
