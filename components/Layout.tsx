@@ -19,6 +19,7 @@ const Header = styled.header`
   background-color: #232527;
   padding-left: 32px;
   padding-right: 32px;
+  flex-shrink: 0;
 
   a {
     text-decoration: none;
@@ -36,7 +37,7 @@ export default function Layout(props: Props) {
   return (
     <Container>
       <Header>
-        <Link href="/">📝 SimplyMDE</Link>
+        <Link href="/">📝 markdown.init</Link>
       </Header>
       <Main>{props.children}</Main>
     </Container>

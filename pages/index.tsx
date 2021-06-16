@@ -11,15 +11,18 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 128px 64px 96px;
-`
 
+  @media only screen and (max-width: 600px) {
+    padding: 80px 32px;
+  }
+`
 const Title = styled.h1`
   font-size: 72px;
-  font-weight: 700;
+  font-weight: 600;
   margin-top: 0;
 
   @media only screen and (max-width: 600px) {
-    font-size: 60px;
+    font-size: 50px;
   }
 `
 const SubTitleWrapper = styled.div`
@@ -50,6 +53,10 @@ const StyledLink = styled.button`
   cursor: pointer;
 `
 
+const GithubLink = styled.a`
+  align-self: flex-start;
+`
+
 const Bold = styled.span`
   font-weight: 600;
 `
@@ -69,13 +76,13 @@ export default function Home() {
         <Link href="/create">
           <StyledLink>Let's Create</StyledLink>
         </Link>
-        <a
+        <GithubLink
           href="https://github.com/futurouz/readme"
           target="__blank"
           rel="noopener"
         >
-          <GitHubSVG />
-        </a>
+          <GitHubSVG fill="#47525d" />
+        </GithubLink>
       </Wrapper>
     </Layout>
   )
