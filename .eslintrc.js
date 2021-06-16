@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     'no-use-before-define': 'off',
     'space-before-function-paren': 'off',
+    'multiline-ternary': 'off',
     'comma-dangle': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'react-hooks/rules-of-hooks': 'error',
