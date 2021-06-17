@@ -1,3 +1,6 @@
+import '@uiw/react-md-editor/dist/markdown-editor.css'
+import '@uiw/react-markdown-preview/dist/markdown.css'
+
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import MDEditor, { commands } from '@uiw/react-md-editor'

@@ -8,9 +8,6 @@ import Text from '../components/Text'
 import { styles } from '../styles/styles'
 import { useMediaQuery } from 'react-responsive'
 
-import '@uiw/react-md-editor/dist/markdown-editor.css'
-import '@uiw/react-markdown-preview/dist/markdown.css'
-
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
