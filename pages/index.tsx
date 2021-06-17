@@ -110,11 +110,7 @@ export default function Home() {
     <Layout>
       <Wrapper>
         <Floating>
-          <img
-            src="https://storage.googleapis.com/isometriclove.appspot.com/paper.png"
-            width="100%"
-            height="100%"
-          />
+          <img src="/paper.png" width="100%" height="100%" />
         </Floating>
         <Title>
           Simply <StrokeWord>Markdown</StrokeWord> Editor
