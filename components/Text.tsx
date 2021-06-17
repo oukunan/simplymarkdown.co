@@ -1,12 +1,8 @@
 import React from 'react'
-
-export const Colors = {
-  primary: 'black',
-  secondary: '#47525d',
-}
+import { Color, Colors } from '../styles/styles'
 
 type Props = {
-  color?: keyof typeof Colors
+  color?: Color
   /**
    * Sync with @font-face
    */

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
+import { Colors } from '../styles/styles'
 
 type Props = {
   children: React.ReactNode
@@ -16,16 +17,15 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   height: 64px;
-  background-color: #232527;
-  padding-left: 32px;
-  padding-right: 32px;
+  background-color: ${Colors.primary};
+  padding: 0 32px;
   flex-shrink: 0;
 
   a {
     text-decoration: none;
     color: white;
-    font-weight: 600;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+    font-weight: 400;
   }
 `
 
@@ -37,7 +37,7 @@ export default function Layout(props: Props) {
   return (
     <Container>
       <Header>
-        <Link href="/">📝 markdown.init</Link>
+        <Link href="/">simplymarkdown.co</Link>
       </Header>
       <Main>{props.children}</Main>
     </Container>

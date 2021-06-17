@@ -39,6 +39,12 @@ export default function Modal(props: Props) {
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
         },
+        overlay: {
+          /**
+           * Make sure that overlay will higher that menu popup
+           */
+          zIndex: 1,
+        },
       }}
     >
       <CloseButton onClick={props.onClose}>&#x2715;</CloseButton>

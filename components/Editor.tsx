@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import MDEditor, { commands } from '@uiw/react-md-editor'
 
 import { customCommands, customExtraCommands } from '../data/custom-commands'
+import { styles } from '../styles/styles'
 import Button from './Button'
 import Modal from './Modal'
+import Text from './Text'
 
 type Props = {
   value: string
@@ -41,11 +43,6 @@ const DownloadModalContent = styled.div`
   flex-direction: column;
   gap: 16px;
   min-width: 400px;
-
-  span {
-    font-weight: 500;
-    margin-bottom: 10px;
-  }
 `
 
 const DownloadInputWrapper = styled.div`
@@ -59,7 +56,7 @@ const DownloadInputWrapper = styled.div`
 
   input {
     border: 1px solid #dfdfe0;
-    border-radius: 4px;
+    border-radius: ${styles.borderRadius};
     padding: 10px;
   }
 `
@@ -150,7 +147,7 @@ export default function Editor(props: Props) {
             />
           </DownloadInputWrapper>
           <FileExtensionWrapper>
-            <span>Pick your extension</span>
+            <Text weight={500}>Pick your file extension</Text>
             <div>
               <input
                 type="radio"

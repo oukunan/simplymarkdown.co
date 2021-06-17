@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { CSSObject } from 'styled-components'
+import { styles } from '../styles/styles'
 
 type ButtonType = 'primary' | 'secondary'
 
@@ -13,7 +14,7 @@ type Props = {
 const StyledButton = styled.button<{ style: CSSObject }>`
   padding: 8px 16px;
   border: none;
-  border-radius: 2px;
+  border-radius: ${styles.borderRadius};
   border: ${(props) => `1px solid ${props.disabled ? 'lightgray' : 'black'}`};
   background-color: var(--backgroundColor);
   color: var(--color);
