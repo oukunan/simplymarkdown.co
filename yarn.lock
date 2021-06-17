@@ -4264,6 +4264,11 @@ next-remove-imports@^1.0.5:
     babel-loader "^8.2.2"
     babel-plugin-transform-remove-imports "^1.5.4"
 
+next-seo@^4.25.1:
+  version "4.25.1"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.25.1.tgz#c1f6ab7203d9729254007670e0136383947fcba8"
+  integrity sha512-McZxm24OWrq/7dFqE1PUrvb5+FR2l4vT8hEdjO5XmnhFqYi0GDvWG2bIOczif5afSVU4aYPmUli/cOYR36Q1dw==
+
 next@10.2.3:
   version "10.2.3"
   resolved "https://registry.yarnpkg.com/next/-/next-10.2.3.tgz#5aa058a63626338cea91c198fda8f2715c058394"
