@@ -45,6 +45,9 @@ const DownloadModalContent = styled.div`
   min-width: 400px;
 `
 
+const RadioList = styled.div`
+  margin-top: 10px;
+`
 const DownloadInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -102,7 +105,9 @@ export default function Editor(props: Props) {
           </>
         }
       >
-        <p>All text will be removed, are you sure?</p>
+        <Text component="h4" weight={500}>
+          All text will be removed, are you sure?
+        </Text>
       </Modal>
     )
   }, [resetModalVisible, props])
@@ -148,7 +153,7 @@ export default function Editor(props: Props) {
           </DownloadInputWrapper>
           <FileExtensionWrapper>
             <Text weight={500}>Pick your file extension</Text>
-            <div>
+            <RadioList>
               <input
                 type="radio"
                 name="md"
@@ -173,7 +178,7 @@ export default function Editor(props: Props) {
                 }
               />
               <label htmlFor="markdown">.markdown</label>
-            </div>
+            </RadioList>
           </FileExtensionWrapper>
           <br />
         </DownloadModalContent>
