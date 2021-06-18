@@ -7,9 +7,9 @@ export const templates = {
   GET /api/users
 \`\`\`
             
-| Attribute | Type        | Required  | Description             |
-| :-------- | :---------- | :-------- | :---------------------- |
-| \`user_id\`    | \`string\`  |   Yes     |   Put your description  |
+| Attribute   | Type        | Required   | Description             |
+| :---------- | :---------- | :--------- | :---------------------- |
+|   user_id   |    string   |    true    |   Put your description  |
 
 `,
   pullRequest: `### Problems
@@ -38,7 +38,7 @@ If you're interested in contributing, please read our contributing docs before s
   collapsible: `<details>
   <summary>Click to expand</summary>
   
-  ### Title
+  ### Hidden title
 </details>
 
 `,
