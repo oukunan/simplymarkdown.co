@@ -7,6 +7,7 @@ import MarkdownPreview from '../components/MarkdownPreview'
 import Text from '../components/Text'
 import { styles } from '../styles/styles'
 import { useMediaQuery } from 'react-responsive'
+import Head from 'next/head'
 
 const Wrapper = styled.div`
   height: 100%;
@@ -52,15 +53,31 @@ export default function Create() {
   }
 
   return (
-    <Layout>
-      <Wrapper>
-        <Item>
-          <Editor value={value} updateValue={setValue} />
-        </Item>
-        <Item>
-          <MarkdownPreview value={value} />
-        </Item>
-      </Wrapper>
-    </Layout>
+    <>
+      <Head>
+        <script
+          data-name="BMC-Widget"
+          data-cfasync="false"
+          src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+          data-id="oukunanan"
+          data-description="Support me on Buy me a coffee!"
+          data-message="Support me by buy me some coffee"
+          data-color="#FFDD00"
+          data-position="Right"
+          data-x_margin="18"
+          data-y_margin="18"
+        ></script>
+      </Head>
+      <Layout>
+        <Wrapper>
+          <Item>
+            <Editor value={value} updateValue={setValue} />
+          </Item>
+          <Item>
+            <MarkdownPreview value={value} />
+          </Item>
+        </Wrapper>
+      </Layout>
+    </>
   )
 }
