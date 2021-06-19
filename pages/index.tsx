@@ -52,7 +52,6 @@ const StyledLink = styled.button`
   border: none;
   border-radius: ${styles.borderRadius};
   font-size: 1.25rem;
-  font-weight: 200;
   background-color: ${Colors.primary};
   color: white;
   cursor: pointer;
@@ -110,7 +109,12 @@ export default function Home() {
     <Layout>
       <Wrapper>
         <Floating>
-          <img src="/paper.png" width="100%" height="100%" />
+          <img
+            src="/paper.png"
+            width="100%"
+            height="100%"
+            alt="paper.png by sometriclove.com"
+          />
         </Floating>
         <Title>
           Simply <StrokeWord>Markdown</StrokeWord> Editor
