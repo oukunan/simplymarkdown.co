@@ -143,6 +143,18 @@ export default function Home() {
             <StyledLink>Let's Create</StyledLink>
           </Link>
           <a
+            href="https://www.producthunt.com/posts/simplymarkdown?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-simplymarkdown"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=300832&theme=light"
+              alt="Simplymarkdown - Easy create markdown with template and live preview | Product Hunt"
+              width="250"
+              height="54"
+            />
+          </a>
+          <a
             href="https://github.com/futurouz/readme"
             target="__blank"
             rel="noopener"
