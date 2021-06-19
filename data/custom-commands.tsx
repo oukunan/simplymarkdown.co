@@ -8,7 +8,7 @@ import {
 
 import { templates } from './templates'
 
-export const customCommands: { [key: string]: ICommand } = {
+export const customCommands = {
   apiReference: {
     name: 'api',
     keyCommand: 'api',
