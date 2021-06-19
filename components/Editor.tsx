@@ -29,6 +29,10 @@ const MDEStyled = styled(MDEditor)`
   .w-md-editor-text-input,
   .w-md-editor-text > .w-md-editor-text-pre {
     font-family: monospace;
+    /** 
+     * Prevent some character overlap
+     */
+    letter-spacing: 0.1px;
   }
 
   .w-md-editor-toolbar li > button {
