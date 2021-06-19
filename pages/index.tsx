@@ -69,10 +69,19 @@ const StyledLink = styled.button`
 const LinkWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+
+  // "gap" does not work with Safari v14.0
+  > *:not(:last-child) {
+    margin-right: 20px;
+  }
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
+
+    // "gap" does not work with Safari v14.0
+    > *:not(:last-child) {
+      margin-bottom: 20px;
+    }
 
     ${StyledLink} {
       width: 100%;

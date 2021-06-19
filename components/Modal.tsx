@@ -22,7 +22,11 @@ const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+
+  // "gap" does not work with Safari v14.0
+  > *:not(:last-child) {
+    margin-right: 8px;
+  }
 `
 
 export default function Modal(props: Props) {

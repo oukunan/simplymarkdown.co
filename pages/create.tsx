@@ -15,8 +15,12 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  gap: 24px;
   padding: 20px 50px;
+
+  // "gap" does not work with Safari v14.0
+  > *:not(:last-child) {
+    margin-right: 24px;
+  }
 `
 
 const Item = styled.div`

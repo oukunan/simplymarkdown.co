@@ -40,6 +40,7 @@ const MDEStyled = styled(MDEditor)`
   }
 
   .w-md-editor-toolbar-child .w-md-editor-toolbar ul > li button {
+    width: 100%;
     padding: 10px 15px;
     text-align: left;
   }
@@ -48,8 +49,12 @@ const MDEStyled = styled(MDEditor)`
 const DownloadModalContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
   min-width: 400px;
+
+  // "gap" does not work with safari v14.0
+  > *:not(:last-child) {
+    margin-bottom: 16px;
+  }
 `
 
 const RadioList = styled.div`
