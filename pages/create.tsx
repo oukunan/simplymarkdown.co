@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useMediaQuery } from 'react-responsive'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 
+import { styles } from '../styles/styles'
 import Layout from '../components/Layout'
 import Editor from '../components/Editor'
 import MarkdownPreview from '../components/MarkdownPreview'
 import Text from '../components/Text'
-import { styles } from '../styles/styles'
-import { useMediaQuery } from 'react-responsive'
-import Head from 'next/head'
 
 const Wrapper = styled.div`
   height: 100%;
@@ -34,16 +35,65 @@ const NonDesktopWrapper = styled.div`
   padding: 0 50px;
 `
 
+const initialState = '**Hello world!!!**'
+const warningText = 'You will lost your changes, are you sure to do that?'
+
 export default function Create() {
+  const router = useRouter()
   const isDesktop = useMediaQuery({ minWidth: 1281 })
-  const [value, setValue] = useState('**Hello world!!!**')
+  const [value, setValue] = useState(initialState)
+  const isClean = value === initialState
+
+  /**
+   * Handle route (NextJS route) change when markdown changed
+   */
+  useEffect(() => {
+    const handleBrowseAway = () => {
+      if (isClean) {
+        return
+      }
+
+      // TODO: Better to use `Modal` component
+      if (window.confirm(warningText)) {
+        return
+      }
+
+      router.events.emit('routeChangeError')
+
+      throw new Error('Prevent changing route')
+    }
+    router.events.on('routeChangeStart', handleBrowseAway)
+
+    return () => {
+      router.events.off('routeChangeStart', handleBrowseAway)
+    }
+  }, [router.events, isClean])
+
+  /**
+   * Handle closing `window` when markdown changed
+   */
+  useEffect(() => {
+    const handleWindowClose = (e: BeforeUnloadEvent) => {
+      if (isClean) {
+        return
+      }
+
+      e.preventDefault()
+
+      return (e.returnValue = warningText)
+    }
+    window.addEventListener('beforeunload', handleWindowClose)
+
+    return () => {
+      window.removeEventListener('beforeunload', handleWindowClose)
+    }
+  }, [isClean])
 
   if (!isDesktop && typeof window !== 'undefined') {
     return (
       <NonDesktopWrapper>
         <Text component="h3" weight={600}>
-          simplymarkdown.co have best experience with hi-res laptops and
-          desktops.
+          simplymarkdown.co have best experience desktops.
         </Text>
         <Text weight={300} color="primary">
           Please use wider screen and start to create the markdown
