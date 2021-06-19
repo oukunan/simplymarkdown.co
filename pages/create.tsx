@@ -97,10 +97,10 @@ export default function Create() {
     return (
       <NonDesktopWrapper>
         <Text component="h3" weight={600}>
-          simplymarkdown.co have best experience desktops.
+          simplymarkdown.co have the best experience with desktop
         </Text>
         <Text weight={300} color="primary">
-          Please use wider screen and start to create the markdown
+          Please use wider screen and start to create the markdown :)
         </Text>
       </NonDesktopWrapper>
     )
