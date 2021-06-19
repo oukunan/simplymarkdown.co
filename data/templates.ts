@@ -42,4 +42,9 @@ If you're interested in contributing, please read our contributing docs before s
 </details>
 
 `,
+  centerTitle: `<h1 align="center">
+    Project title
+ </h1>
+ 
+ `,
 }

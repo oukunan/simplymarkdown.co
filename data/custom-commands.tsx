@@ -54,6 +54,15 @@ export const customCommands = {
       api.replaceSelection(templates.collapsible)
     },
   },
+  centerTitle: {
+    name: 'centerTitle',
+    keyCommand: 'centerTitle',
+    buttonProps: { 'aria-label': 'Insert centerTitle' },
+    icon: <span>Center Title</span>,
+    execute: (__state: TextState, api: TextAreaTextApi) => {
+      api.replaceSelection(templates.centerTitle)
+    },
+  },
 }
 
 export const customExtraCommands: { [key: string]: ICommand } = {

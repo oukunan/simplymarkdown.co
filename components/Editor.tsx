@@ -233,6 +233,7 @@ export default function Editor(props: Props) {
         customCommands.contributing,
         customCommands.pullRequest,
         customCommands.collapsible,
+        customCommands.centerTitle,
       ],
       {
         name: 'Templates',
