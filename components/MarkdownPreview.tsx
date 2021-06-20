@@ -11,7 +11,9 @@ const Wrapper = styled(MDEditor.Markdown)`
   height: 100%;
   padding: 48px 24px;
 
-  // Make ::marker for this type hidden
+  /**
+   * Make ::marker for this type hidden
+   */
   ul .task-list-item::marker {
     color: white;
   }

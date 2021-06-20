@@ -23,7 +23,9 @@ const ButtonWrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
 
-  // "gap" does not work with Safari v14.0
+  /**
+   * "gap" does not work with Safari v14.0
+   */
   > *:not(:last-child) {
     margin-right: 8px;
   }

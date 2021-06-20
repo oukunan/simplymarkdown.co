@@ -51,7 +51,9 @@ const DownloadModalContent = styled.div`
   flex-direction: column;
   min-width: 400px;
 
-  // "gap" does not work with safari v14.0
+  /** 
+   * Make ::marker for this type hidden
+   */
   > *:not(:last-child) {
     margin-bottom: 16px;
   }

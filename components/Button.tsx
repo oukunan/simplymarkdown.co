@@ -13,7 +13,6 @@ type Props = {
 
 const StyledButton = styled.button<{ style: CSSObject }>`
   padding: 8px 16px;
-  border: none;
   border-radius: ${styles.borderRadius};
   border: ${(props) => `1px solid ${props.disabled ? 'lightgray' : 'black'}`};
   background-color: var(--backgroundColor);

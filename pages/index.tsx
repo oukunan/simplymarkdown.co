@@ -31,7 +31,7 @@ const Title = styled.h1`
 const StrokeWord = styled.span`
   color: white;
   -webkit-text-stroke-width: 1.75px;
-  -webkit-text-stroke-color: ${Colors.primary}; ;
+  -webkit-text-stroke-color: ${Colors.primary};
 `
 
 const SubTitleWrapper = styled.div`
@@ -70,7 +70,9 @@ const LinkWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  // "gap" does not work with Safari v14.0
+  /**
+   * "gap" does not work with Safari v14.0
+   */
   > *:not(:last-child) {
     margin-right: 20px;
   }
@@ -78,7 +80,9 @@ const LinkWrapper = styled.div`
   @media only screen and (max-width: 600px) {
     flex-direction: column;
 
-    // "gap" does not work with Safari v14.0
+    /**
+     * "gap" does not work with Safari v14.0
+     */
     > *:not(:last-child) {
       margin-bottom: 20px;
     }

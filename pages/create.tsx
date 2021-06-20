@@ -17,7 +17,9 @@ const Wrapper = styled.div`
   justify-content: space-evenly;
   padding: 20px 50px;
 
-  // "gap" does not work with Safari v14.0
+  /**
+   * "gap" does not work with Safari v14.0
+   */
   > *:not(:last-child) {
     margin-right: 24px;
   }
